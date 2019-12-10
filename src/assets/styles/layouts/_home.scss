@@ -1,0 +1,803 @@
+//Scroll. No sigue criterios BEM
+html {
+  scroll-behavior: smooth;
+}
+// <-------Contenedor------->
+
+.container-fluid {
+  @include make-container(0);
+  font-family: $font-family;
+}
+
+.container {
+  color: $body-color;
+  font-family: $font-family;
+}
+
+// <-------Home NO Grid------->
+%grid__title {
+  text-transform: uppercase;
+  font-size: $font-size-base;
+  color: $white;
+}
+
+.grid {
+  &--bg {
+    width: 100%;
+    background-image: url(/assets/images/bg-portada.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding-top: 17%;
+    margin: 0 auto;
+  }
+
+  &__txt--big {
+    font-size: $font-size-base * 4.5;
+    font-weight: $font-weight-bold;
+    line-height: 3rem;
+    color: $white;
+  }
+
+  &__txt {
+    color: $white;
+    font-size: $font-size-base * 0.9;
+    margin: 0;
+    padding: 5%;
+  }
+
+  &__link {
+    color: $white;
+  }
+
+  &__link:hover {
+    color: $navbar-dark-hover-color;
+    text-decoration: none;
+  }
+
+  &__title {
+    &--horizontal {
+      @extend %grid__title;
+    }
+
+    &--vertical {
+      @extend %grid__title;
+      margin-bottom: 15px;
+    }
+  }
+
+  &__btn {
+    margin-bottom: 10%;
+  }
+}
+
+.play {
+  &__btn {
+    color: $white;
+    font-size: $font-size-base * 3;
+    background-color: $bg-transparent;
+    border: 0;
+    margin: 2%;
+  }
+}
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  border-radius: 0;
+  border-bottom: 0;
+  background-color: $black;
+}
+
+.close {
+  color: $white;
+}
+
+.close:hover {
+  color: $white;
+}
+
+%item {
+  display: block;
+  transition: all 0.4s ease-in-out;
+}
+
+%item:hover {
+  transform: scale(1.1);
+}
+
+.item {
+  &--1 {
+    @extend %item;
+    margin-bottom: 2%;
+  }
+
+  &--2 {
+    @extend %item;
+    margin-bottom: 2%;
+  }
+
+  &--3 {
+    @extend %item;
+  }
+}
+
+.bar--dark {
+  display: none;
+}
+
+.btn {
+  border-radius: 0;
+  text-transform: uppercase;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-base * 0.7;
+  padding: 0.8rem 0.7rem;
+}
+
+// <-------Home Grid------->
+
+@supports (display: grid) {
+  %grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100px auto 100px;
+    grid-template-rows: 150px auto 100px 1fr;
+  }
+
+  %grid__title {
+    text-transform: uppercase;
+    font-size: $font-size-base * 0.7;
+    color: $white;
+  }
+
+  .grid {
+    &--bg {
+      @extend %grid;
+      background-image: url(/assets/images/bg-portada.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      text-align: left;
+      padding-top: 0%;
+    }
+
+    &__txt--big {
+      @include element-grid(2, 2, 2);
+      font-size: $font-size-base * 3;
+      font-weight: $font-weight-bold;
+      line-height: 3rem;
+      color: $white;
+    }
+
+    &__txt {
+      color: $white;
+
+      @include element-grid(2, 2, 8);
+      align-self: end;
+      font-size: $font-size-base * 0.9;
+    }
+
+    &__link {
+      color: $white;
+    }
+
+    &__link:hover {
+      color: $navbar-dark-hover-color;
+      text-decoration: none;
+    }
+
+    &__title {
+      &--horizontal {
+        @extend %grid__title;
+
+        @include element-grid(2, 2, 1);
+        display: grid;
+        align-self: flex-end;
+      }
+
+      &--vertical {
+        @extend %grid__title;
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+
+        @include element-grid(1, 1, 5);
+        margin-left: 40px;
+        margin-bottom: 15px;
+        display: grid;
+        justify-self: flex-end;
+      }
+    }
+
+    &__btn {
+      @include element-grid(2, 2, 4);
+      align-self: end;
+    }
+  }
+
+  .play {
+    @include element-grid(2, 2, 3);
+
+    &__btn {
+      color: $white;
+      font-size: $font-size-base * 3;
+      background-color: $bg-transparent;
+      border: 0;
+      line-height: 0;
+    }
+  }
+
+  .modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    border-radius: 0;
+    border-bottom: 0;
+    background-color: $black;
+  }
+
+  .close {
+    color: $white;
+  }
+
+  .close:hover {
+    color: $white;
+  }
+
+  %item {
+    z-index: 100;
+    margin-right: 8%;
+    transition: all 0.4s ease-in-out;
+  }
+
+  %item:hover {
+    transform: scale(1.1);
+  }
+
+  .item {
+    &--1 {
+      @extend %item;
+
+      @include element-grid(2, 2, 5);
+      margin-bottom: 15px;
+      float: none;
+    }
+
+    &--2 {
+      @extend %item;
+
+      @include element-grid(2, 2, 6);
+      margin-bottom: 5px;
+      float: none;
+    }
+
+    &--3 {
+      @extend %item;
+
+      @include element-grid(2, 2, 7);
+      margin-bottom: 15px;
+      float: none;
+    }
+
+    &__title {
+      color: $white;
+
+      &--vertical {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .bar--dark {
+    display: block;
+    background-color: $black;
+    grid-column: 1/4;
+    grid-row: 5/9;
+    margin-top: 60px;
+  }
+
+  .btn {
+    border-radius: 0;
+    text-transform: uppercase;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-base * 0.7;
+    padding: 0.8rem 0.7rem;
+  }
+}
+
+// <-------Miembros------->
+.seccion--bg {
+  background-image: url(/assets/images/FONS_WEB_1.jpg);
+  background-position-y: bottom;
+  background-repeat: no-repeat;
+  text-align: center;
+}
+
+.miembros__contenido {
+  padding-top: 20%;
+  padding-bottom: 6%;
+}
+
+.miembros__columnas {
+  margin-top: 8%;
+  margin-right: 10%;
+  margin-left: 10%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.miembros {
+  &__img {
+    margin-top: 6%;
+    max-width: 100%;
+    border-radius: 50%;
+    margin-bottom: 6%;
+    box-shadow: $box-shadow;
+  }
+
+  &__nombre {
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.03rem;
+    margin-bottom: 0.2rem;
+  }
+
+  &__posicion {
+    text-transform: uppercase;
+    font-size: $font-size-base * 0.8;
+  }
+}
+
+// <-------Blog------->
+
+.articulo {
+  &__portada {
+    height: 70vh;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__img {
+    max-width: 100%;
+  }
+
+  &__txt {
+    position: absolute;
+    color: $white;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+
+  &__contenido {
+    padding: 4% 15%;
+  }
+
+  &__title {
+    font-weight: $font-weight-bold;
+  }
+
+  &__subtitle {
+    font-weight: $font-weight-bold;
+  }
+}
+
+%seccion {
+  padding-bottom: 3%;
+}
+
+.seccion {
+  @extend %seccion;
+
+  &__title {
+    font-weight: $font-weight-bold;
+    margin-bottom: 2%;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+
+    &--center {
+      font-weight: $font-weight-bold;
+      margin-top: 6%;
+      margin-bottom: 6%;
+      text-transform: uppercase;
+      letter-spacing: 0.15rem;
+      text-align: center;
+    }
+
+    &--white {
+      font-weight: $font-weight-bold;
+      margin-bottom: 2%;
+      text-transform: uppercase;
+      letter-spacing: 0.15rem;
+      color: $white;
+    }
+  }
+
+  &__subtitle {
+    text-transform: uppercase;
+    font-size: $font-size-base * 0.7;
+  }
+
+  &__discografia {
+    @extend %seccion;
+  }
+
+  &__destacado {
+    @extend %seccion;
+    align-items: center;
+  }
+
+  &__albums {
+    @extend %seccion;
+  }
+}
+
+.list-group {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+}
+
+.list-group-item {
+  border: 0;
+  padding: 0.75rem 0;
+}
+
+.disc__title {
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+  letter-spacing: 0.03rem;
+}
+
+.disc__produccion {
+  font-size: $font-size-base * 0.8;
+  font-weight: $font-weight-lighter;
+  color: $secondary;
+  text-transform: none;
+  font-style: italic;
+}
+
+.disc__ano {
+  font-style: italic;
+  text-transform: none;
+}
+
+.destacado__quote {
+  font-size: $font-size-base * 2;
+  font-weight: $font-weight-lighter;
+}
+
+.seccion__conclusion__img {
+  @extend %seccion;
+}
+
+// <-------Multimedia------->
+
+.jumbotron-fluid {
+  background-image: url(/assets/images/Smoking-Souls-2018-3-1024x683.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.jumbotron {
+  height: 80vh;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5%;
+}
+
+.seccion-jumbotron {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lead {
+  color: $white;
+}
+
+.seccion-albums {
+  padding-right: 10%;
+  padding-left: 10%;
+}
+
+.item-album {
+  width: 70%;
+  margin-bottom: 5%;
+}
+
+.portada-album {
+  width: 100%;
+}
+
+.table__location {
+  color: $secondary;
+}
+
+.table__title {
+  text-transform: uppercase;
+}
+
+.table-borderless {
+  border: 0;
+}
+
+tbody tr {
+  @include hover() {
+    background-color: $table-hover-bg;
+  }
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 50px;
+  height: 80px;
+}
+
+//Responsive
+//<--------Home--------->
+
+@include media-breakpoint-up(lg) {
+  .grid {
+    &--bg {
+      padding-top: 10%;
+    }
+
+    &__txt--big {
+      font-size: $font-size-base * 3;
+    }
+
+    &__btn {
+      margin-bottom: 5%;
+    }
+
+    &__txt {
+      clear: both;
+      padding: 2%;
+    }
+  }
+
+  .item {
+    &--1 {
+      float: left;
+      margin-left: 23.5%;
+      margin-bottom: 0;
+    }
+
+    &--2 {
+      float: left;
+      margin-bottom: 0;
+    }
+
+    &--3 {
+      float: left;
+      margin-right: 23.5%;
+      margin-bottom: 0;
+    }
+  }
+
+  //<--------Miembros--------->
+
+  .miembros {
+    &__img {
+      margin-bottom: 10%;
+    }
+  }
+
+  .miembros__columnas {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 5%;
+  }
+
+  .miembros__contenido {
+    padding-top: 8%;
+  }
+
+  .seccion__miembros {
+    background-position-y: 70vh;
+  }
+
+  .articulo__portada {
+    height: 80vh;
+  }
+
+  .jumbotron {
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25%;
+  }
+
+  .seccion__albums {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .item-album {
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .portada-album {
+    width: 100%;
+  }
+}
+// Media Grid
+@supports (display: grid) {
+  @include media-breakpoint-up(lg) {
+    %grid {
+      grid-template-columns: repeat(12, [col-start] 1fr);
+      grid-template-rows: 150px 1fr;
+      height: 100vh;
+      text-align: left;
+    }
+
+    %grid__title {
+      font-size: $font-size-base * 0.7;
+    }
+
+    .grid {
+      &--bg {
+        padding-top: 0;
+      }
+
+      &__txt--big {
+        @include element-grid(6, 6, 2);
+        font-size: $font-size-base * 4.5;
+        line-height: 4rem;
+      }
+
+      &__txt {
+        @include element-grid(7, 11, 6);
+        align-self: end;
+        font-size: $font-size-base * 0.9;
+      }
+
+      &__title {
+        &--horizontal {
+          @extend %grid__title;
+
+          @include element-grid(6, 6, 1);
+          display: grid;
+          align-self: flex-end;
+        }
+
+        &--vertical {
+          @include element-grid(3, 3, 6);
+          display: grid;
+          justify-self: flex-end;
+        }
+      }
+
+      &__btn {
+        @include element-grid(2, 3, 6);
+        align-self: start;
+        margin-top: 60px;
+      }
+    }
+
+    .play {
+      @include element-grid(7, 7, 2);
+      padding-left: 5%;
+
+      &__btn {
+        font-size: $font-size-base * 4;
+        line-height: 0;
+      }
+    }
+
+    .item {
+      &--1 {
+        @extend %item;
+
+        @include element-grid(4, 5, 6);
+        margin-left: 0;
+      }
+
+      &--2 {
+        @extend %item;
+
+        @include element-grid(5, 6, 6);
+      }
+
+      &--3 {
+        @extend %item;
+
+        @include element-grid(6, 7, 6);
+        margin-right: 0;
+      }
+    }
+
+    .bar--dark {
+      @include element-grid(3, 13, 6);
+      margin-top: 60px;
+    }
+
+    .btn {
+      font-size: $font-size-base * 0.7;
+      padding: 0.8rem 0.7rem;
+    }
+  }
+
+  @include media-breakpoint-only(md) {
+    .grid {
+      &__txt--big {
+        @include element-grid(4, 4, 3);
+        font-size: $font-size-base * 3.5;
+      }
+
+      &__txt {
+        @include element-grid(5, 5, 7);
+        align-self: end;
+        font-size: $font-size-base * 0.9;
+        margin-right: 20px;
+      }
+
+      &__title {
+        &--horizontal {
+          @include element-grid(4, 4, 2);
+          display: grid;
+          align-self: flex-end;
+        }
+
+        &--vertical {
+          @include element-grid(3, 3, 6);
+          display: grid;
+          justify-self: flex-end;
+        }
+      }
+
+      &__btn {
+        @include element-grid(2, 3, 6);
+        align-self: start;
+        margin-top: 60px;
+        display: grid;
+        justify-content: end;
+      }
+    }
+
+    .play {
+      @include element-grid(5, 5, 3);
+      padding-left: 5%;
+
+      &__btn {
+        font-size: $font-size-base * 4;
+        line-height: 0;
+      }
+    }
+
+    .item {
+      &--1 {
+        @include element-grid(4, 5, 6);
+      }
+
+      &--2 {
+        @include element-grid(5, 6, 6);
+      }
+
+      &--3 {
+        margin-right: 0;
+
+        @include element-grid(4, 5, 7);
+      }
+    }
+
+    .bar--dark {
+      @include element-grid(3, 13, 6);
+      grid-row-end: 9;
+      margin-top: 60px;
+    }
+
+    .btn {
+      font-size: $font-size-base * 0.7;
+      padding: 0.8rem 0.7rem;
+    }
+  }
+}

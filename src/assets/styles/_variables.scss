@@ -1,0 +1,39 @@
+//Color system
+$white:    #fff !default;
+$primary: #333;
+$secondary: #777;
+
+//Border
+$boder-color: #efefef;
+
+//Shadow
+$box-shadow:0 5px 30px 5px rgba(102, 102, 102, 0.15);
+
+//Body
+$body-bg:                   $white !default;
+$body-color:                $primary !important;
+
+// Typography
+$font-family: "Lato", sans-serif !important;
+
+$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
+$font-size-lg:                $font-size-base * 1.25 !default;
+$font-size-sm:                $font-size-base * 0.875 !default;
+$h1-font-size:                $font-size-base * 1.8 !default;
+$h2-font-size:                $font-size-base * 1.6 !default;
+$h3-font-size:                $font-size-base * 1.3 !default;
+$h4-font-size:                $font-size-base * 1 !default;
+$h5-font-size:                $font-size-base * 1 !default;
+$h6-font-size:                $font-size-base !default;
+
+// Background
+$bg-transparent: transparent;
+$bg-color: #e6e6e6;
+
+// NavBar
+$navbar-dark-color: $white !default;
+$bg-nav:rgba(0, 0, 0, 0.5);
+
+// Table
+$table-border-color:$boder-color !default;
+$table-hover-bg: $bg-color;

@@ -1,0 +1,26 @@
+.container {
+  color: $white;
+}
+
+.bg-nav {
+  background-color: $black;
+}
+
+.bg--transparent {
+  background-color: $primary;
+}
+
+.navbar-dark,
+.navbar-toggler {
+  border: 0;
+}
+
+@include media-breakpoint-up(lg) {
+  .bg--transparent {
+    background-color: $bg-transparent !important;
+  }
+
+  .bg-nav {
+    background-color: $bg-nav;
+  }
+}

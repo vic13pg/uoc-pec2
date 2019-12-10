@@ -1,0 +1,52 @@
+.footer {
+  background-color: $black;
+  text-align: center;
+  font-size: 0.8em;
+
+  &-contenido {
+    padding: 1rem 1.5rem;
+  }
+
+  &__menu {
+    padding: 2%;
+    display: block;
+    text-align: center;
+  }
+
+  &__social {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.nav-link {
+  color: $white;
+
+  &:hover {
+    color: rgba(255, 255, 255, 0.75);
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .footer {
+    &-contenido {
+      display: flex;
+      padding: 1rem 1.5rem;
+      align-items: center;
+      justify-content: space-between;
+      align-content: center;
+    }
+
+    &__menu {
+      display: flex;
+      padding: 0;
+      align-items: center;
+      flex-direction: row;
+      align-content: center;
+    }
+
+    &__social {
+      display: flex;
+    }
+  }
+}
